@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-2xl">
-        <h1 className="text-3xl font-bold text-center mb-6">HeyGen Interactive Avatar</h1>
+        <h1 className="text-3xl font-bold text-center mb-6">Interactive Avatar</h1>
         <div className="aspect-w-16 aspect-h-9">
           <iframe
             src={streamingLink}
