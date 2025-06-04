@@ -11,7 +11,7 @@ function App() {
         <div className="aspect-w-16 aspect-h-9">
           <iframe
             src={streamingLink}
-            title="HeyGen Interactive Avatar"
+            title="Interactive Avatar"
             className="w-full h-full"
             allow="camera; microphone; autoplay; encrypted-media"
             allowFullScreen
