@@ -74,7 +74,7 @@ function App() {
       <div className="sections-container">
         <div className="chat-description">
           <h2>You're now chatting with the AI Avatar of People's Leasing & Finance PLC.</h2>
-          <p>Have a question about our current Annual Report? Get real-time answers instantly.</p>
+          <p>Do you have a question about our current Annual Report? Get real-time answers instantly.</p>
         </div>
         <div className="analysis-section">
           <p className="analysis-text">To Get In-depth Analysis Use Our ChatBot</p>
