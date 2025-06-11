@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const streamingLink = 'https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJBbGVzc2FuZHJhX0NoYWlyX1NpdHRpbmdf%0D%0AcHVibGljIiwicHJldmlld0ltZyI6Imh0dHBzOi8vZmlsZXMyLmhleWdlbi5haS9hdmF0YXIvdjMv%0D%0AODllMDdiODI2ZjFjNGNiMWE1NTQ5MjAxY2RkOGY0ZDZfNTUzMDAvcHJldmlld190YXJnZXQud2Vi%0D%0AcCIsIm5lZWRSZW1vdmVCYWNrZ3JvdW5kIjpmYWxzZSwia25vd2xlZGdlQmFzZUlkIjoiNjA0MmQw%0D%0AODU3ODVkNGFkY2JmZGY4ZTE5NjlhOWQ0MjgiLCJ1c2VybmFtZSI6IjExYmNmN2NiODI2YjRmN2E4%0D%0AMmZhM2JmNGRhOTVjOTFhIn0%3D&inIFrame=1';
+  const streamingLink = 'https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJhMDBkZmZkNDk2MjI0Yzk1OGI1MWFkYzI3NGY4NzhjMyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzL2EwMGRmZmQ0OTYyMjRjOTU4YjUxYWRjMjc0Zjg3OGMzL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImZkYjY2Mzc0MzMwMzQ5M2Q4MzZmZDg1ZDVhMDVhYThmIiwidXNlcm5hbWUiOiJkZmUzMmU4ZThkMmY0MDRjOTc0OTNiZmQ5MjhhMzBiYyJ9&inIFrame=1';
   const host = 'https://labs.heygen.com';
 
-  // State to control visibility and expansion
-  const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [clientWidth, setClientWidth] = useState(window.innerWidth);
 
-  // Update clientWidth on window resize
   useEffect(() => {
     const handleResize = () => setClientWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle messages from the iframe
   useEffect(() => {
     const handleMessage = (e) => {
       if (e.origin === host && e.data && e.data.type === 'streaming-embed') {
@@ -35,7 +32,6 @@ function App() {
     return () => window.removeEventListener('message', handleMessage);
   }, []);
 
-  // Header component
   const Header = () => (
     <header className="app-header">
       <div className="logo">
@@ -43,7 +39,7 @@ function App() {
       </div>
       <div className="header-icons">
         <div className="chatbot">
-          <img src="/Assets/AI_ChatBot.png" alt="AI Chatbot" />
+          <img src="/Assets/AI_ChatBot.png" alt="AI Chatbot Logo" style={{ pointerEvents: 'none' }} />
         </div>
       </div>
     </header>
@@ -56,13 +52,10 @@ function App() {
         id="streaming-embed"
         className={`chat-embed ${isVisible ? 'visible' : 'hidden'} ${isExpanded ? 'expanded' : ''}`}
         style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          margin: '0 auto',
           ...(isExpanded
             ? clientWidth < 540
-              ? { height: 'calc(100vh - 120px)', width: 'calc(100% - 20px)', top: 'calc(50% + 30px)' }
+              ? { height: 'calc(100vh - 120px)', width: 'calc(100% - 20px)' }
               : { height: '600px', width: 'calc(600px * 16 / 9)' }
             : { height: '180px', width: '180px' }),
         }}
@@ -76,6 +69,21 @@ function App() {
             allowFullScreen={false}
             role="dialog"
           ></iframe>
+        </div>
+      </div>
+      <div className="sections-container">
+        <div className="chat-description">
+          <h2>You're now chatting with the AI Avatar of People's Leasing & Finance PLC.</h2>
+          <p>Have a question about our current Annual Report? Get real-time answers instantly.</p>
+        </div>
+        <div className="analysis-section">
+          <p className="analysis-text">To Get In-depth Analysis Use Our ChatBot</p>
+          <button
+            className="chatbot-button"
+            onClick={() => window.open('https://finsightc.plc.lk', '_blank')}
+          >
+            Go to ChatBot
+          </button>
         </div>
       </div>
     </div>
