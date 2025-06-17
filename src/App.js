@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const streamingLink = 'https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJhMDBkZmZkNDk2MjI0Yzk1OGI1MWFkYzI3NGY4NzhjMyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzL2EwMGRmZmQ0OTYyMjRjOTU4YjUxYWRjMjc0Zjg3OGMzL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImZkYjY2Mzc0MzMwMzQ5M2Q4MzZmZDg1ZDVhMDVhYThmIiwidXNlcm5hbWUiOiJkZmUzMmU4ZThkMmY0MDRjOTc0OTNiZmQ5MjhhMzBiYyJ9&inIFrame=1';
+  const streamingLink = 'https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiJhMDBkZmZkNDk2MjI0Yzk1OGI1MWFkYzI3NGY4NzhjMyIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzL2EwMGRmZmQ0OTYyMjRjOTU4YjUxYWRjMjc0Zjg3OGMzL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6IjJhZWIzMWEyYzAxMDRhYTliNWFkNjVkY2VhY2FhZTEyIiwidXNlcm5hbWUiOiJkZmUzMmU4ZThkMmY0MDRjOTc0OTNiZmQ5MjhhMzBiYyJ9&inIFrame=1';
   const host = 'https://labs.heygen.com';
 
   const [isVisible, setIsVisible] = useState(true);
@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const handleResize = () => setClientWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.addEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
